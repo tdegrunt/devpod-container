@@ -1,0 +1,89 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ruby-rails-postgres
+{
+	"name": "devpod-container",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": { },
+		"ghcr.io/rails/devcontainer/features/activestorage": { },
+		"ghcr.io/rails/devcontainer/features/postgres-client": {
+			"version": "17"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": { },
+		"ghcr.io/devcontainers/features/node:1": { },
+
+		"ghcr.io/devcontainers/features/git:1": { },
+		"ghcr.io/rails/devcontainer/features/ruby": {
+			"version": "3.4.1"
+			// "version": "${localEnv:RBENV_VERSION}"
+		},
+		"ghcr.io/duduribeiro/devcontainer-features/tmux:1": { },
+		"ghcr.io/devcontainers/features/docker-in-docker:2": { },
+		"ghcr.io/christophermacgown/devcontainer-features/direnv:1": { },
+		"ghcr.io/devcontainers/features/sshd:1": { },
+		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": { "version": "stable" }
+	},
+	"postCreateCommand": "bash .devcontainer/post-create.sh",
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// This can be used to network with other containers or the host.
+	"forwardPorts": [ 3000 ],
+	"containerEnv": {
+		"REDIS_URL": "redis://redis:6379/0",
+		"RAILS_REDIS_URL": "redis://redis:6379/0",
+		"CABLE_REDIS_URL": "redis://redis:6379/1",
+		"VISUAL": "code -w"
+	},
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh",
+				// All of these settings are scoped only to the Ruby language
+				"[ruby]": {
+					"editor.defaultFormatter": "Shopify.ruby-lsp", // Use the Ruby LSP as the default formatter
+					"editor.formatOnSave": true, // Format files automatically when saving
+					"editor.tabSize": 2, // Use 2 spaces for indentation
+					"editor.insertSpaces": true, // Use spaces and not tabs for indentation
+					"editor.semanticHighlighting.enabled": true, // Enable semantic highlighting
+					"editor.formatOnType": true // Enable formatting while typing
+				}
+			},
+			"extensions": [
+				"Shopify.ruby-lsp",
+				"monokai.theme-monokai-pro-vscode",
+				"johnpapa.vscode-peacock",
+				"borama.ruby-slim",
+				"BriteSnow.vscode-toggle-quotes",
+				"streetsidesoftware.code-spell-checker",
+				"streetsidesoftware.code-spell-checker-dutch",
+				"amodio.find-related",
+				"eamodio.gitlens",
+				"lokalise.i18n-ally",
+				"sissel.shopify-liquid",
+				"yzhang.markdown-all-in-one",
+				"bierner.markdown-mermaid",
+				"ninoseki.vscode-mogami",
+				"christian-kohler.path-intellisense",
+				"humao.rest-client",
+				"marclipovsky.string-manipulation",
+				"redhat.vscode-yaml",
+				"pavlitsky.yard",
+				"codezombiech.gitignore",
+				"github.vscode-github-actions",
+				"nhoizey.gremlins",
+				"ecmel.vscode-html-css",
+				"ms-vscode.live-server",
+				"ms-vsliveshare.vsliveshare",
+				"standard.vscode-standard",
+				"Gruntfuggly.todo-tree",
+				"bradlc.vscode-tailwindcss",
+				"solomonkinard.bookmark",
+				"ariassd.terminal-loader",
+				"KoichiSasada.vscode-rdbg"
+			]
+		}
+	},
+	"workspaceFolder": "/workspaces/server"
+}
