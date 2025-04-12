@@ -21,7 +21,6 @@
 		"ghcr.io/duduribeiro/devcontainer-features/tmux:1": { },
 		"ghcr.io/devcontainers/features/docker-in-docker:2": { },
 		"ghcr.io/christophermacgown/devcontainer-features/direnv:1": { },
-		"ghcr.io/devcontainers/features/sshd:1": { },
 		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": { "version": "stable" }
 	},
 	"postCreateCommand": "bash .devcontainer/post-create.sh",
